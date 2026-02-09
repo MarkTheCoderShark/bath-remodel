@@ -1,0 +1,291 @@
+PRODUCT REQUIREMENTS DOCUMENT (PRD)
+Premium Bathroom & Kitchen Remodeling Landing Page
+Version: v1.1
+Date: Feb 8, 2026
+Audience: Senior Front-End Engineer / UI Engineer / Design-aware AI Agent
+1. PRODUCT GOAL
+Build a high-end, conversion-focused landing page for a bathroom & kitchen remodeling company that feels:
+Premium
+Calm and spa-like
+Trustworthy and established
+Confident without being salesy
+The page must visually justify premium pricing through design quality, restraint, and clarity — not hype.
+This is not a generic contractor website.
+2. PRIMARY INSPIRATION (MANDATORY)
+Use the provided StanCraft Construction UI as structural inspiration:
+Full-width cinematic hero
+Header overlayed on hero (transparent at top)
+Header transitions to solid brand surface on scroll
+No hard hero separator
+Hero fades/blurs into next section
+Thin horizontal rail near hero bottom with microcopy + trust elements
+Do not copy colors, typography, or content — only layout behavior and hierarchy.
+3. TARGET USER
+Homeowners who:
+Own mid-to-high value homes
+Are planning a bathroom or kitchen remodel
+Value craftsmanship, design, and long-term quality
+Are willing to pay more for professionalism and trust
+They are skeptical of:
+Pushy sales language
+Cheap-looking websites
+Over-designed gimmicks
+4. TECH STACK & CONSTRAINTS
+Required
+React (single-page component is acceptable)
+Tailwind CSS only (no external CSS files)
+Clean semantic HTML (header, main, section, footer)
+Accessible patterns (labels, focus states, aria)
+No backend
+Images via public URLs only (Unsplash, etc.)
+No UI libraries (build components manually)
+All animations and transitions must respect prefers-reduced-motion: reduce
+When reduced motion is active, replace animations with instant state changes
+All below-fold images must use loading="lazy"
+Hero image must be eager-loaded (loading="eager")
+Use skeleton placeholders (animate-pulse) while images load to prevent content jumping
+Form behavior
+Client-side validation only
+Mock submit handler
+Loading + success states
+5. DESIGN SYSTEM (NON-NEGOTIABLE)
+Color Palette (Exact Values)
+Primary background: #FAFAF9 (warm off-white / limestone — NOT pure white)
+Surface light: #FFFFFF (cards, elevated surfaces)
+Surface dark: #F5F5F0 (alternating sections, subtle depth)
+Text primary: #1C1917 (charcoal — headings, body)
+Text muted: #44403C (secondary text, captions)
+Text subtle: #78716C (helper text, placeholders — minimum contrast)
+Accent brass: #CA8A04 (CTA buttons, small highlights ONLY)
+Accent brass hover: #A16207 (darkened brass for hover states)
+Border default: rgba(0,0,0,0.05) (low-contrast borders)
+No bright blues. No saturated colors.
+Typography
+Serif headings + sans-serif body (NOT pure sans-serif — serif conveys premium/luxury)
+Heading font: Playfair Display (elegant, editorial, spa-appropriate)
+Body font: Inter (clean, highly legible, modern)
+Google Fonts: https://fonts.google.com/share?selection.family=Inter:wght@300;400;500;600;700|Playfair+Display:wght@400;500;600;700
+Tailwind config: fontFamily: { serif: ['Playfair Display', 'serif'], sans: ['Inter', 'sans-serif'] }
+Strong hierarchy (use serif for h1–h3, sans for h4–h6 and body)
+Comfortable line heights (1.5–1.75 for body text)
+Short paragraphs
+Max text width: ~60–70ch
+Spacing & Layout
+Max content width: 1200px
+Horizontal padding:
+mobile: px-4
+tablet: px-6
+desktop: px-8
+Vertical rhythm:
+mobile: py-12
+tablet: py-16
+desktop: py-20
+Whitespace is intentional. Avoid crowding.
+Z-Index Scale
+Hero content: z-10
+Header (sticky): z-30
+Mobile menu panel: z-40
+Sticky mobile CTA bar: z-50
+Components Style Rules
+Border radius: rounded-2xl
+Shadows: subtle only (shadow-sm, hover only)
+Borders: low-contrast (border-black/5)
+Transitions: 150–250ms, ease-out
+Icons:
+Inline SVG only (NO emojis as icons — ever)
+Consistent icon set (Heroicons or Lucide)
+20–24px with fixed viewBox (24x24)
+Stroke width ~1.75–2
+6. HEADER BEHAVIOR (CRITICAL)
+Default (Top of Page)
+Transparent background
+White text
+Overlayed on hero image
+No shadow
+On Scroll (≥ ~10px)
+Background switches to limestone/off-white
+Slight backdrop blur
+Subtle bottom border
+Soft shadow
+Text switches to charcoal
+Header Content
+Left: Brand wordmark placeholder
+Example: [Brand] Bath & Kitchen
+Right navigation:
+Services
+Gallery
+Process
+Pricing
+Reviews
+Phone number (click-to-call, full number visible)
+Primary CTA button:
+"Get a Free Estimate"
+Mobile
+Phone icon button (44x44px minimum) visible in header — NOT inside hamburger menu
+Hamburger menu for nav links
+Simple dropdown panel (not full screen)
+Maintain premium feel
+7. HERO SECTION (MOST IMPORTANT)
+Layout
+Full-width
+Height: desktop min-h-[85vh], mobile min-h-[min(85vh,600px)] or min-h-svh (avoids mobile address bar bounce)
+Background: luxury bathroom or kitchen image
+Natural daylight
+Stone, tile, glass, brushed metal
+Overlay gradient:
+Very subtle at top
+Stronger at bottom to blend into next section
+Content (Left-aligned)
+Headline
+Premium Bathroom & Kitchen Remodeling
+Subheadline
+Thoughtful design, precision craftsmanship, and long-term value for your home.
+CTAs
+Primary (brass):
+“Get a Free Estimate”
+Secondary (outline/text):
+“View Our Work”
+Trust Microcopy
+Licensed • Insured • Free Consultations
+HERO TRANSITION (REPLACES CURVE)
+IMPORTANT: No SVG curve
+Instead:
+Hero fades into next section using:
+Bottom gradient
+Subtle blur/darkening
+This transition must feel organic, not abrupt
+HERO FOOTER RAIL (Inspired by StanCraft)
+Positioned near bottom of hero:
+Thin horizontal line across content width
+Left-aligned micro label:
+Serving [City], [Nearby Cities]
+Right-aligned trust chips:
+[SVG star icon] 4.9 Avg Rating (180+ Reviews)
+Licensed & Insured
+Design-Build Experts
+No awards. Keep it understated.
+8. TRUST STRIP (Below Hero)
+Warm limestone background
+4 trust items with icons:
+5-Star Rated
+Licensed & Insured
+Local Experts
+Transparent Pricing
+Airy spacing
+Quiet typography
+9. TRANSFORMATIONS (BEFORE / AFTER)
+Section
+Title: Stunning Transformations
+Subtitle: See the difference expert craftsmanship makes.
+Cards
+2–3 large cards
+Consistent aspect ratio
+Each includes:
+Before/After comparison
+Labels (“Before” / “After”)
+Short caption (e.g., “Walk-In Shower Remodel”)
+Interaction
+Desktop: draggable slider
+  Keyboard: focusable, operable with left/right arrow keys
+  ARIA: role="slider", aria-valuemin="0", aria-valuemax="100", aria-valuenow, aria-label
+  Visible focus ring when keyboard-navigated
+Mobile: Before / After toggle buttons
+  Minimum 44x44px touch targets
+  Active state clearly distinguished
+Must be accessible (both modes)
+CTA:
+View Full Gallery
+10. SERVICES
+4–6 service cards:
+Full Bathroom Remodeling
+Custom Walk-In Showers
+Kitchen Remodeling
+Tub-to-Shower Conversions
+Tile & Stone Work
+Each card:
+Icon
+Title
+1–2 line description
+Subtle hover lift or border change
+11. PROCESS
+Title: Our Remodeling Process
+Subtitle: A simple, stress-free experience.
+Steps:
+Consultation
+Design
+Build
+Final Walkthrough
+Each step:
+Minimal icon
+Short reassuring sentence
+Optional note:
+Most projects completed in 6–10 weeks.
+12. COST TRANSPARENCY
+Title: Understanding Your Investment
+Tone: educational, not salesy.
+Key points:
+Clear, upfront pricing
+No hidden fees
+Long-term value
+Optional:
+“Typical projects start at…” (placeholder range)
+13. TESTIMONIALS
+Static grid (no loud carousel)
+3 testimonials: 1 column on mobile, 3 columns on desktop
+Each testimonial includes:
+  Avatar/photo (use placeholder initial avatar if no photo)
+  1–2 sentence quote
+  Star rating (inline SVG stars, not emoji)
+  First name + last initial
+  Project type label (e.g., "Bathroom Remodel")
+Subtle plaster/stone texture feel using gradients
+14. FINAL CTA + FORM
+Headline
+Get Your Free Remodeling Estimate
+Subtext
+Thoughtful guidance. No pressure.
+Form Fields
+Name (required)
+Phone (required OR email required)
+Email
+Message (optional)
+Validation
+Validate on blur (not on every keystroke)
+After first submit attempt, switch to real-time validation for fields with errors
+Inline errors shown below each field in friendly language
+Phone field must accept common formats (spaces, dashes, parentheses)
+Button loading state (disable button, show spinner, prevent double-submit)
+Success confirmation message (replace form with success state, do not just show a toast)
+Microcopy
+No pressure. No obligation. Your information stays private.
+15. STICKY MOBILE CTA BAR
+On mobile (< 768px), show a sticky bottom bar after scrolling past the hero
+Contains: "Get a Free Estimate" button (full-width brass CTA)
+Appears with a subtle slide-up animation
+Must not obstruct content (add padding-bottom to body when visible)
+Hides when user reaches the final CTA + form section (to avoid duplication)
+z-index: z-50
+16. FOOTER
+Brand + short trust statement
+Navigation links
+Contact info
+Service area
+Muted styling
+17. ACCEPTANCE CRITERIA (QUALITY BAR)
+The page must:
+Look finished, not like a wireframe
+Feel calm, premium, and intentional
+Avoid sales clichés
+Maintain consistent spacing and component styles
+Pass basic accessibility checks (focus states, aria, labels, contrast 4.5:1+)
+Respect prefers-reduced-motion
+Be responsive at 375px, 768px, 1024px, and 1440px breakpoints
+No horizontal scroll on any breakpoint
+No emojis used as icons anywhere (SVG only)
+All clickable elements have cursor-pointer
+All images lazy-loaded except hero
+18. DELIVERABLE
+React component(s) using Tailwind
+Clean, readable code
+Components broken logically (Header, Hero, Services, etc.)
+No explanations — code output only
