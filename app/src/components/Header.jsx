@@ -1,29 +1,30 @@
 import { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../assets/images/logo.png';
 
 const serviceItems = [
-  { label: 'Bathroom Remodeling', href: '#services' },
-  { label: 'Kitchen Remodeling', href: '#services' },
-  { label: 'Walk-In Showers', href: '#services' },
-  { label: 'Tub-to-Shower Conversions', href: '#services' },
-  { label: 'Tile & Stone Work', href: '#services' },
-  { label: 'Vanity & Countertops', href: '#services' },
+  { label: 'Bathroom Remodeling', to: '/services/bathroom-remodeling' },
+  { label: 'Kitchen Remodeling', to: '/services/kitchen-remodeling' },
+  { label: 'Walk-In Showers', to: '/services/walk-in-showers' },
+  { label: 'Tub-to-Shower Conversions', to: '/services/tub-to-shower-conversions' },
+  { label: 'Tile & Stone Work', to: '/services/tile-stone-work' },
+  { label: 'Vanity & Countertops', to: '/services/vanity-countertops' },
 ];
 
 const serviceAreas = [
-  { label: 'Sacramento', href: '#service-area' },
-  { label: 'Elk Grove', href: '#service-area' },
-  { label: 'Roseville', href: '#service-area' },
-  { label: 'Folsom', href: '#service-area' },
-  { label: 'Rancho Cordova', href: '#service-area' },
-  { label: 'Citrus Heights', href: '#service-area' },
+  { label: 'Sacramento', to: '/service-areas/sacramento' },
+  { label: 'Elk Grove', to: '/service-areas/elk-grove' },
+  { label: 'Roseville', to: '/service-areas/roseville' },
+  { label: 'Folsom', to: '/service-areas/folsom' },
+  { label: 'Rancho Cordova', to: '/service-areas/rancho-cordova' },
+  { label: 'Citrus Heights', to: '/service-areas/citrus-heights' },
 ];
 
 const navLinks = [
-  { label: 'Gallery', href: '#gallery' },
-  { label: 'Process', href: '#process' },
-  { label: 'Reviews', href: '#reviews' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Gallery', to: '/gallery' },
+  { label: 'Process', href: '/#process' },
+  { label: 'Reviews', href: '/#reviews' },
+  { label: 'Contact', to: '/contact' },
 ];
 
 export default function Header() {
@@ -82,13 +83,13 @@ export default function Header() {
             </div>
 
             {/* Center on desktop / Left on mobile: Brand */}
-            <a href="#" className="cursor-pointer">
+            <Link to="/" className="cursor-pointer">
               <img
                 src={logo}
                 alt="Oakwood Remodel"
                 className="h-32 md:h-36 w-auto"
               />
-            </a>
+            </Link>
 
             {/* Right: Phone + CTA (desktop) */}
             <div className="hidden md:flex items-center gap-5">
@@ -111,12 +112,12 @@ export default function Header() {
                 </svg>
                 (555) 123-4567
               </a>
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 className="bg-brass text-white px-6 py-2.5 rounded-lg text-base font-semibold hover:bg-brass-hover cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
               >
                 Free Estimate
-              </a>
+              </Link>
             </div>
 
             {/* Mobile: phone + hamburger */}
@@ -180,66 +181,82 @@ export default function Header() {
           <div className="max-w-[1200px] mx-auto px-4 md:px-6 lg:px-8">
             <nav className="flex items-center justify-center gap-8 h-11">
               {/* Services dropdown */}
-              <div ref={servicesRef} className="relative">
+              <div
+                ref={servicesRef}
+                className="relative"
+                onMouseEnter={() => { setServicesOpen(true); setAreasOpen(false); }}
+                onMouseLeave={() => setServicesOpen(false)}
+              >
                 <button
-                  onClick={() => {
-                    setServicesOpen((prev) => !prev);
-                    setAreasOpen(false);
-                  }}
                   className="flex items-center gap-1 text-sm font-medium text-charcoal hover:text-brass cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
                 >
                   Services {chevron}
                 </button>
                 {servicesOpen && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-limestone-light rounded-xl border border-border-strong shadow-soft py-2 z-50">
-                    {serviceItems.map((item) => (
-                      <a
-                        key={item.label}
-                        href={item.href}
-                        onClick={() => setServicesOpen(false)}
-                        className="block px-4 py-2.5 text-sm text-muted hover:text-charcoal hover:bg-limestone-dark transition-colors duration-150"
-                      >
-                        {item.label}
-                      </a>
-                    ))}
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50">
+                    <div className="w-56 bg-limestone-light rounded-xl border border-border-strong shadow-soft py-2">
+                      {serviceItems.map((item) => (
+                        <Link
+                          key={item.label}
+                          to={item.to}
+                          onClick={() => setServicesOpen(false)}
+                          className="block px-4 py-2.5 text-sm text-muted hover:text-charcoal hover:bg-limestone-dark transition-colors duration-150"
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
 
               {/* Standard links */}
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm font-medium text-charcoal hover:text-brass cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
-                >
-                  {link.label}
-                </a>
-              ))}
+              {navLinks.map((link) =>
+                link.to ? (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    className="text-sm font-medium text-charcoal hover:text-brass cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm font-medium text-charcoal hover:text-brass cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
+                  >
+                    {link.label}
+                  </a>
+                )
+              )}
 
               {/* Service Areas dropdown */}
-              <div ref={areasRef} className="relative">
+              <div
+                ref={areasRef}
+                className="relative"
+                onMouseEnter={() => { setAreasOpen(true); setServicesOpen(false); }}
+                onMouseLeave={() => setAreasOpen(false)}
+              >
                 <button
-                  onClick={() => {
-                    setAreasOpen((prev) => !prev);
-                    setServicesOpen(false);
-                  }}
                   className="flex items-center gap-1 text-sm font-medium text-charcoal hover:text-brass cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
                 >
                   Service Areas {chevron}
                 </button>
                 {areasOpen && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-limestone-light rounded-xl border border-border-strong shadow-soft py-2 z-50">
-                    {serviceAreas.map((area) => (
-                      <a
-                        key={area.label}
-                        href={area.href}
-                        onClick={() => setAreasOpen(false)}
-                        className="block px-4 py-2.5 text-sm text-muted hover:text-charcoal hover:bg-limestone-dark transition-colors duration-150"
-                      >
-                        {area.label}
-                      </a>
-                    ))}
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50">
+                    <div className="w-48 bg-limestone-light rounded-xl border border-border-strong shadow-soft py-2">
+                      {serviceAreas.map((area) => (
+                        <Link
+                          key={area.label}
+                          to={area.to}
+                          onClick={() => setAreasOpen(false)}
+                          className="block px-4 py-2.5 text-sm text-muted hover:text-charcoal hover:bg-limestone-dark transition-colors duration-150"
+                        >
+                          {area.label}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
@@ -276,29 +293,40 @@ export default function Header() {
             {mobileServicesOpen && (
               <div className="bg-limestone-dark">
                 {serviceItems.map((item) => (
-                  <a
+                  <Link
                     key={item.label}
-                    href={item.href}
+                    to={item.to}
                     onClick={() => setMobileMenuOpen(false)}
                     className="block py-2.5 pl-8 pr-4 text-muted text-sm hover:text-charcoal transition-colors duration-150"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             )}
 
             {/* Standard links */}
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="py-3 px-4 text-charcoal hover:bg-limestone-dark text-sm font-medium cursor-pointer transition-colors duration-200"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.to ? (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="py-3 px-4 text-charcoal hover:bg-limestone-dark text-sm font-medium cursor-pointer transition-colors duration-200"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="py-3 px-4 text-charcoal hover:bg-limestone-dark text-sm font-medium cursor-pointer transition-colors duration-200"
+                >
+                  {link.label}
+                </a>
+              )
+            )}
 
             {/* Service Areas accordion */}
             <button
@@ -324,26 +352,26 @@ export default function Header() {
             {mobileAreasOpen && (
               <div className="bg-limestone-dark">
                 {serviceAreas.map((area) => (
-                  <a
+                  <Link
                     key={area.label}
-                    href={area.href}
+                    to={area.to}
                     onClick={() => setMobileMenuOpen(false)}
                     className="block py-2.5 pl-8 pr-4 text-muted text-sm hover:text-charcoal transition-colors duration-150"
                   >
                     {area.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             )}
 
             <div className="px-4 py-4">
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block bg-brass text-white text-center px-5 py-3 rounded-lg text-sm font-semibold hover:bg-brass-hover cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
               >
                 Get a Free Estimate
-              </a>
+              </Link>
             </div>
           </nav>
         </div>

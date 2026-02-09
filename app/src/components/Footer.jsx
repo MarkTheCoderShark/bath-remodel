@@ -1,19 +1,21 @@
+import { Link } from 'react-router-dom';
+
 const navLinks = [
-  { label: 'Services', href: '#services' },
-  { label: 'Portfolio', href: '#gallery' },
-  { label: 'Process', href: '#process' },
-  { label: 'Reviews', href: '#reviews' },
-  { label: 'Service Areas', href: '#service-area' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Services', to: '/services/bathroom-remodeling' },
+  { label: 'Portfolio', to: '/gallery' },
+  { label: 'Process', href: '/#process' },
+  { label: 'Reviews', href: '/#reviews' },
+  { label: 'Service Areas', to: '/service-areas/sacramento' },
+  { label: 'Contact', to: '/contact' },
 ];
 
 const serviceLinks = [
-  'Bathroom Remodeling',
-  'Kitchen Remodeling',
-  'Walk-In Showers',
-  'Tub-to-Shower Conversions',
-  'Tile & Stone Work',
-  'Vanity & Countertops',
+  { label: 'Bathroom Remodeling', to: '/services/bathroom-remodeling' },
+  { label: 'Kitchen Remodeling', to: '/services/kitchen-remodeling' },
+  { label: 'Walk-In Showers', to: '/services/walk-in-showers' },
+  { label: 'Tub-to-Shower Conversions', to: '/services/tub-to-shower-conversions' },
+  { label: 'Tile & Stone Work', to: '/services/tile-stone-work' },
+  { label: 'Vanity & Countertops', to: '/services/vanity-countertops' },
 ];
 
 export default function Footer() {
@@ -31,12 +33,12 @@ export default function Footer() {
             </p>
           </div>
           <div className="flex gap-4">
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="bg-brass text-white px-6 py-3 rounded-2xl font-semibold text-sm hover:bg-brass-hover cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
             >
               Get a Free Estimate
-            </a>
+            </Link>
             <a
               href="tel:5551234567"
               className="border border-border-strong text-muted px-6 py-3 rounded-2xl font-semibold text-sm hover:bg-limestone-dark cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
@@ -90,15 +92,25 @@ export default function Footer() {
               Company
             </p>
             <nav className="flex flex-col gap-2.5">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-muted hover:text-charcoal text-sm cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
-                >
-                  {link.label}
-                </a>
-              ))}
+              {navLinks.map((link) =>
+                link.to ? (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    className="text-muted hover:text-charcoal text-sm cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="text-muted hover:text-charcoal text-sm cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
+                  >
+                    {link.label}
+                  </a>
+                )
+              )}
             </nav>
           </div>
 
@@ -109,13 +121,13 @@ export default function Footer() {
             </p>
             <ul className="flex flex-col gap-2.5">
               {serviceLinks.map((service) => (
-                <li key={service}>
-                  <a
-                    href="#services"
+                <li key={service.label}>
+                  <Link
+                    to={service.to}
                     className="text-muted hover:text-charcoal text-sm cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
                   >
-                    {service}
-                  </a>
+                    {service.label}
+                  </Link>
                 </li>
               ))}
             </ul>
