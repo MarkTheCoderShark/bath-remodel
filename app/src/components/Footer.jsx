@@ -79,7 +79,7 @@ export default function Footer() {
               </span>
               <span className="text-subtle-2/40">|</span>
               <span className="inline-flex items-center gap-1.5 text-subtle-2 text-xs">
-                TX License #12345
+                CA License #12345
               </span>
             </div>
           </div>
@@ -181,7 +181,7 @@ export default function Footer() {
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
-                Austin, TX &amp; Surrounding Areas
+                Sacramento, CA &amp; Surrounding Areas
               </p>
             </div>
           </div>

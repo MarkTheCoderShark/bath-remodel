@@ -61,7 +61,7 @@ export default function Hero() {
           <div className="flex justify-between items-center flex-wrap gap-4">
             {/* Left: service area */}
             <span className="text-white/50 text-xs tracking-wide uppercase">
-              Serving Austin, Round Rock &amp; Cedar Park
+              Serving Sacramento, Roseville &amp; Elk Grove
             </span>
 
             {/* Right: trust chips */}

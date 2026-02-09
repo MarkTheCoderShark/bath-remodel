@@ -1,12 +1,12 @@
 const cities = [
-  'Austin',
-  'Westlake Hills',
-  'Lakeway',
-  'Round Rock',
-  'Cedar Park',
-  'Georgetown',
-  'Bee Cave',
-  'Dripping Springs',
+  'Sacramento',
+  'Elk Grove',
+  'Roseville',
+  'Folsom',
+  'Rancho Cordova',
+  'Citrus Heights',
+  'Rocklin',
+  'Davis',
 ];
 
 export default function ServiceArea() {
@@ -33,7 +33,7 @@ export default function ServiceArea() {
                 <circle cx="12" cy="10" r="3" />
               </svg>
               <h2 className="font-sans text-lg font-semibold text-charcoal">
-                Serving the Greater Austin Area
+                Serving the Greater Sacramento Area
               </h2>
             </div>
             <div className="flex flex-wrap gap-2">

@@ -3,7 +3,7 @@ const testimonials = [
     name: 'Sarah M.',
     initials: 'SM',
     project: 'Master Bath Remodel',
-    location: 'Round Rock',
+    location: 'Roseville',
     quote:
       'We interviewed four contractors before choosing Luxe. What sold us was the detail in their estimate. Every line item was explained. Our master bath turned out better than the 3D rendering.',
   },
@@ -11,7 +11,7 @@ const testimonials = [
     name: 'James R.',
     initials: 'JR',
     project: 'Kitchen Renovation',
-    location: 'Cedar Park',
+    location: 'Elk Grove',
     quote:
       'Our kitchen hadn\'t been updated since 2003. The Luxe team kept the project on a tight schedule \u2014 six weeks start to finish. The only surprise was how little disruption there was.',
   },
@@ -19,7 +19,7 @@ const testimonials = [
     name: 'Maria & Carlos D.',
     initials: 'MD',
     project: 'Tub-to-Shower Conversion',
-    location: 'Austin',
+    location: 'Sacramento',
     quote:
       'We were nervous about the process, but our project manager kept us informed at every step. The frameless shower is beautiful, and they finished two days early.',
   },

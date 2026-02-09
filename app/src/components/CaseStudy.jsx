@@ -9,7 +9,7 @@ export default function CaseStudy() {
           <div className="overflow-hidden rounded-2xl">
             <img
               src={heroImage}
-              alt="Completed master bath renovation in Westlake Hills"
+              alt="Completed master bath renovation in Folsom"
               className="w-full h-auto object-cover aspect-[4/3] md:aspect-[2/1]"
               loading="lazy"
             />
@@ -21,7 +21,7 @@ export default function CaseStudy() {
               Featured Project
             </p>
             <h3 className="font-serif text-xl md:text-2xl font-bold text-charcoal mb-4">
-              Westlake Hills Master Suite
+              Folsom Master Suite
             </h3>
 
             <div className="grid grid-cols-3 gap-4 mb-5">
@@ -72,7 +72,7 @@ export default function CaseStudy() {
                 feels like a boutique hotel.&rdquo;
               </p>
               <footer className="text-subtle text-xs mt-2">
-                &mdash; David &amp; Lisa M., Westlake Hills
+                &mdash; David &amp; Lisa M., Folsom
               </footer>
             </blockquote>
           </div>

@@ -25,7 +25,7 @@ export default function Header() {
                 Your Vision, Our Craftsmanship
               </p>
               <p className="text-subtle text-sm">
-                Austin&apos;s Trusted Home Remodeling Experts
+                Sacramento&apos;s Trusted Home Remodeling Experts
               </p>
             </div>
 
