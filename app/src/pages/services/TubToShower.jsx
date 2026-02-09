@@ -122,8 +122,8 @@ export default function TubToShower() {
             <p className="text-brass text-sm font-semibold tracking-widest uppercase mb-3">
               Our Services
             </p>
-            <h1 className="font-serif text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-3xl">
-              Tub-to-Shower Conversions
+            <h1 className="font-serif text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+              Tub&#8209;to&#8209;Shower Conversions
             </h1>
             <p className="text-white/80 text-base md:text-lg lg:text-xl max-w-2xl mt-4 md:mt-6">
               Replace your unused bathtub with a spacious, modern walk-in shower -- more room, better access, and a fresh look.
