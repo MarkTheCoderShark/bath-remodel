@@ -207,18 +207,18 @@ export default function Footer() {
             &copy; 2026 Luxe Bath &amp; Kitchen. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a
-              href="#"
+            <Link
+              to="/privacy"
               className="text-subtle-2 hover:text-muted text-xs cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
             >
               Privacy Policy
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/terms"
               className="text-subtle-2 hover:text-muted text-xs cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
             >
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>

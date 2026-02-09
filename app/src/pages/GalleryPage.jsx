@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useEstimateModal } from '../context/EstimateModalContext';
+import Breadcrumb from '../components/Breadcrumb';
 
 import heroBathroom from '../assets/images/hero-bathroom.png';
 import afterShower from '../assets/images/after-shower.png';
@@ -111,6 +113,22 @@ export default function GalleryPage() {
 
   return (
     <>
+      <Helmet>
+        <title>Our Work | Bathroom & Kitchen Remodeling Gallery | Luxe</title>
+        <meta name="description" content="Browse our portfolio of bathroom and kitchen remodeling projects across Sacramento. See before-and-after transformations showcasing our expert craftsmanship." />
+        <link rel="canonical" href="https://luxebathkitchen.com/gallery" />
+        <meta property="og:title" content="Our Work | Bathroom & Kitchen Remodeling Gallery | Luxe" />
+        <meta property="og:description" content="Browse our portfolio of bathroom and kitchen remodeling projects across Sacramento. See before-and-after transformations showcasing our expert craftsmanship." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxebathkitchen.com/gallery" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Our Work | Bathroom & Kitchen Remodeling Gallery | Luxe" />
+        <meta name="twitter:description" content="Browse our portfolio of bathroom and kitchen remodeling projects across Sacramento. See before-and-after transformations showcasing our expert craftsmanship." />
+      </Helmet>
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Gallery', href: '/gallery' },
+      ]} />
       {/* Hero Section */}
       <section className="relative bg-charcoal pt-40 md:pt-48 pb-16 md:pb-24 overflow-hidden">
         {/* Subtle background texture */}

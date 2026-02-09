@@ -1,6 +1,9 @@
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useEstimateModal } from '../../context/EstimateModalContext';
 import heroImg from '../../assets/images/hero-bathroom.png';
+import Breadcrumb from '../../components/Breadcrumb';
+import OtherAreas from '../../components/OtherAreas';
 
 const services = [
   { name: 'Bathroom Remodeling', path: '/services/bathroom-remodeling' },
@@ -33,6 +36,23 @@ export default function DavisArea() {
   const { openModal } = useEstimateModal();
   return (
     <>
+      <Helmet>
+        <title>Davis Bathroom & Kitchen Remodeling | Luxe</title>
+        <meta name="description" content="Bathroom and kitchen remodeling services in Davis, CA. Luxe Bath & Kitchen brings Sacramento-area expertise with premium materials and transparent fixed pricing." />
+        <link rel="canonical" href="https://luxebathkitchen.com/service-areas/davis" />
+        <meta property="og:title" content="Davis Bathroom & Kitchen Remodeling | Luxe" />
+        <meta property="og:description" content="Bathroom and kitchen remodeling services in Davis, CA. Luxe Bath & Kitchen brings Sacramento-area expertise with premium materials and transparent pricing." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxebathkitchen.com/service-areas/davis" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Davis Bathroom & Kitchen Remodeling | Luxe" />
+        <meta name="twitter:description" content="Bathroom and kitchen remodeling services in Davis, CA. Luxe Bath & Kitchen brings Sacramento-area expertise with premium materials and transparent pricing." />
+      </Helmet>
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Service Areas', href: '/service-areas/sacramento' },
+        { label: 'Davis', href: '/service-areas/davis' },
+      ]} />
       {/* Hero */}
       <section className="relative min-h-[75vh] md:min-h-[85vh] overflow-hidden">
         <img
@@ -206,6 +226,9 @@ export default function DavisArea() {
           </div>
         </div>
       </section>
+
+      {/* Other Areas */}
+      <OtherAreas currentPath="/service-areas/davis" />
 
       {/* CTA */}
       <section className="py-16 md:py-24 bg-stone">

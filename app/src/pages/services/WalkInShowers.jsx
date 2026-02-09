@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useEstimateModal } from '../../context/EstimateModalContext';
+import Breadcrumb from '../../components/Breadcrumb';
+import RelatedServices from '../../components/RelatedServices';
 import heroImg from '../../assets/images/after-shower.png';
+import StructuredData from '../../components/StructuredData';
 
 const included = [
   'Custom-sized frameless or semi-frameless glass enclosure',
@@ -75,8 +79,64 @@ export default function WalkInShowers() {
   const { openModal } = useEstimateModal();
   const [openFaq, setOpenFaq] = useState(null);
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Custom Walk-In Showers',
+    description: 'Frameless glass, premium tile, and spa-worthy fixtures designed for your daily ritual.',
+    url: 'https://luxebathkitchen.com/services/walk-in-showers',
+    provider: {
+      '@type': 'HomeAndConstructionBusiness',
+      name: 'Luxe Bath & Kitchen',
+      url: 'https://luxebathkitchen.com',
+      telephone: '(555) 123-4567',
+    },
+    areaServed: [
+      { '@type': 'City', name: 'Sacramento' },
+      { '@type': 'City', name: 'Elk Grove' },
+      { '@type': 'City', name: 'Roseville' },
+      { '@type': 'City', name: 'Folsom' },
+      { '@type': 'City', name: 'Rancho Cordova' },
+      { '@type': 'City', name: 'Citrus Heights' },
+      { '@type': 'City', name: 'Rocklin' },
+      { '@type': 'City', name: 'Davis' },
+    ],
+  };
+
   return (
     <>
+      <Helmet>
+        <title>Custom Walk-In Showers Sacramento | Luxe Bath & Kitchen</title>
+        <meta name="description" content="Custom walk-in shower installation in Sacramento by Luxe Bath & Kitchen. Frameless glass, premium tile, rain heads, and built-in storage. Get a free estimate." />
+        <link rel="canonical" href="https://luxebathkitchen.com/services/walk-in-showers" />
+        <meta property="og:title" content="Custom Walk-In Showers Sacramento | Luxe Bath & Kitchen" />
+        <meta property="og:description" content="Custom walk-in shower installation in Sacramento by Luxe Bath & Kitchen. Frameless glass, premium tile, rain heads, and built-in storage." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxebathkitchen.com/services/walk-in-showers" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Custom Walk-In Showers Sacramento | Luxe Bath & Kitchen" />
+        <meta name="twitter:description" content="Custom walk-in shower installation in Sacramento by Luxe Bath & Kitchen. Frameless glass, premium tile, rain heads, and built-in storage." />
+      </Helmet>
+      <StructuredData data={faqSchema} />
+      <StructuredData data={serviceSchema} />
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Services', href: '/services/bathroom-remodeling' },
+        { label: 'Walk-In Showers', href: '/services/walk-in-showers' },
+      ]} />
       {/* ── Hero ── */}
       <section className="relative min-h-[75vh] md:min-h-[85vh] overflow-hidden">
         <img
@@ -253,6 +313,9 @@ export default function WalkInShowers() {
           </div>
         </div>
       </section>
+
+      {/* ── Related Services ── */}
+      <RelatedServices currentPath="/services/walk-in-showers" />
 
       {/* ── Bottom CTA ── */}
       <section className="py-16 md:py-24">

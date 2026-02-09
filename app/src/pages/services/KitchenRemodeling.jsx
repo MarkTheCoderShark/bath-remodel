@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useEstimateModal } from '../../context/EstimateModalContext';
+import Breadcrumb from '../../components/Breadcrumb';
+import RelatedServices from '../../components/RelatedServices';
 import heroImg from '../../assets/images/after-kitchen.png';
+import StructuredData from '../../components/StructuredData';
 
 const process = [
   {
@@ -100,8 +104,64 @@ export default function KitchenRemodeling() {
   const { openModal } = useEstimateModal();
   const [openFaq, setOpenFaq] = useState(null);
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Kitchen Remodeling',
+    description: 'The heart of your home deserves thoughtful design, quality materials, and expert craftsmanship from start to finish.',
+    url: 'https://luxebathkitchen.com/services/kitchen-remodeling',
+    provider: {
+      '@type': 'HomeAndConstructionBusiness',
+      name: 'Luxe Bath & Kitchen',
+      url: 'https://luxebathkitchen.com',
+      telephone: '(555) 123-4567',
+    },
+    areaServed: [
+      { '@type': 'City', name: 'Sacramento' },
+      { '@type': 'City', name: 'Elk Grove' },
+      { '@type': 'City', name: 'Roseville' },
+      { '@type': 'City', name: 'Folsom' },
+      { '@type': 'City', name: 'Rancho Cordova' },
+      { '@type': 'City', name: 'Citrus Heights' },
+      { '@type': 'City', name: 'Rocklin' },
+      { '@type': 'City', name: 'Davis' },
+    ],
+  };
+
   return (
     <>
+      <Helmet>
+        <title>Kitchen Remodeling Sacramento | Luxe Bath & Kitchen</title>
+        <meta name="description" content="Expert kitchen remodeling in Sacramento by Luxe Bath & Kitchen. Custom cabinetry, countertops, layouts, and finishes. Design-build convenience with fixed-price proposals." />
+        <link rel="canonical" href="https://luxebathkitchen.com/services/kitchen-remodeling" />
+        <meta property="og:title" content="Kitchen Remodeling Sacramento | Luxe Bath & Kitchen" />
+        <meta property="og:description" content="Expert kitchen remodeling in Sacramento by Luxe Bath & Kitchen. Custom cabinetry, countertops, layouts, and finishes with fixed-price proposals." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxebathkitchen.com/services/kitchen-remodeling" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Kitchen Remodeling Sacramento | Luxe Bath & Kitchen" />
+        <meta name="twitter:description" content="Expert kitchen remodeling in Sacramento by Luxe Bath & Kitchen. Custom cabinetry, countertops, layouts, and finishes with fixed-price proposals." />
+      </Helmet>
+      <StructuredData data={faqSchema} />
+      <StructuredData data={serviceSchema} />
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Services', href: '/services/bathroom-remodeling' },
+        { label: 'Kitchen Remodeling', href: '/services/kitchen-remodeling' },
+      ]} />
       {/* ── Hero ── */}
       <section className="relative min-h-[75vh] md:min-h-[85vh] overflow-hidden">
         <img
@@ -272,6 +332,9 @@ export default function KitchenRemodeling() {
           </div>
         </div>
       </section>
+
+      {/* ── Related Services ── */}
+      <RelatedServices currentPath="/services/kitchen-remodeling" />
 
       {/* ── Bottom CTA ── */}
       <section className="py-16 md:py-24">

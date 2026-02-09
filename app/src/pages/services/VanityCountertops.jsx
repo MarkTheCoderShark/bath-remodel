@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useEstimateModal } from '../../context/EstimateModalContext';
+import Breadcrumb from '../../components/Breadcrumb';
+import RelatedServices from '../../components/RelatedServices';
 import heroImg from '../../assets/images/service-vanity.png';
+import StructuredData from '../../components/StructuredData';
 
 const included = [
   'Removal and disposal of your existing vanity, countertop, and plumbing connections',
@@ -76,8 +80,64 @@ export default function VanityCountertops() {
   const { openModal } = useEstimateModal();
   const [openFaq, setOpenFaq] = useState(null);
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Vanity & Countertops',
+    description: 'Custom vanities and precision-fitted countertops that anchor your bathroom with style, storage, and lasting quality.',
+    url: 'https://luxebathkitchen.com/services/vanity-countertops',
+    provider: {
+      '@type': 'HomeAndConstructionBusiness',
+      name: 'Luxe Bath & Kitchen',
+      url: 'https://luxebathkitchen.com',
+      telephone: '(555) 123-4567',
+    },
+    areaServed: [
+      { '@type': 'City', name: 'Sacramento' },
+      { '@type': 'City', name: 'Elk Grove' },
+      { '@type': 'City', name: 'Roseville' },
+      { '@type': 'City', name: 'Folsom' },
+      { '@type': 'City', name: 'Rancho Cordova' },
+      { '@type': 'City', name: 'Citrus Heights' },
+      { '@type': 'City', name: 'Rocklin' },
+      { '@type': 'City', name: 'Davis' },
+    ],
+  };
+
   return (
     <>
+      <Helmet>
+        <title>Vanity & Countertops Sacramento | Luxe Bath & Kitchen</title>
+        <meta name="description" content="Custom vanity and countertop installation in Sacramento by Luxe Bath & Kitchen. Quartz, granite, marble countertops with expert fabrication and precise fitting." />
+        <link rel="canonical" href="https://luxebathkitchen.com/services/vanity-countertops" />
+        <meta property="og:title" content="Vanity & Countertops Sacramento | Luxe Bath & Kitchen" />
+        <meta property="og:description" content="Custom vanity and countertop installation in Sacramento by Luxe Bath & Kitchen. Quartz, granite, marble countertops with expert fabrication." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxebathkitchen.com/services/vanity-countertops" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Vanity & Countertops Sacramento | Luxe Bath & Kitchen" />
+        <meta name="twitter:description" content="Custom vanity and countertop installation in Sacramento by Luxe Bath & Kitchen. Quartz, granite, marble countertops with expert fabrication." />
+      </Helmet>
+      <StructuredData data={faqSchema} />
+      <StructuredData data={serviceSchema} />
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Services', href: '/services/bathroom-remodeling' },
+        { label: 'Vanity & Countertops', href: '/services/vanity-countertops' },
+      ]} />
       {/* ── Hero ── */}
       <section className="relative min-h-[75vh] md:min-h-[85vh] overflow-hidden">
         <img
@@ -254,6 +314,9 @@ export default function VanityCountertops() {
           </div>
         </div>
       </section>
+
+      {/* ── Related Services ── */}
+      <RelatedServices currentPath="/services/vanity-countertops" />
 
       {/* ── Bottom CTA ── */}
       <section className="py-16 md:py-24">

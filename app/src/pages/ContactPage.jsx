@@ -1,5 +1,7 @@
 import { useState, useCallback } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import Breadcrumb from '../components/Breadcrumb';
 
 const serviceOptions = [
   'Bathroom Remodeling',
@@ -99,6 +101,22 @@ export default function ContactPage() {
 
   return (
     <>
+      <Helmet>
+        <title>Contact Us | Free Remodeling Estimate | Luxe Bath & Kitchen</title>
+        <meta name="description" content="Contact Luxe Bath & Kitchen for a free, no-obligation remodeling estimate in Sacramento, CA. Call (555) 123-4567 or fill out our form. We respond within 24 hours." />
+        <link rel="canonical" href="https://luxebathkitchen.com/contact" />
+        <meta property="og:title" content="Contact Us | Free Remodeling Estimate | Luxe Bath & Kitchen" />
+        <meta property="og:description" content="Contact Luxe Bath & Kitchen for a free, no-obligation remodeling estimate in Sacramento, CA. Call (555) 123-4567 or fill out our form." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxebathkitchen.com/contact" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact Us | Free Remodeling Estimate | Luxe Bath & Kitchen" />
+        <meta name="twitter:description" content="Contact Luxe Bath & Kitchen for a free, no-obligation remodeling estimate in Sacramento, CA. Call (555) 123-4567 or fill out our form." />
+      </Helmet>
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Contact', href: '/contact' },
+      ]} />
       {/* Hero Section */}
       <section className="relative bg-charcoal pt-40 md:pt-48 pb-16 md:pb-24 overflow-hidden">
         {/* Subtle background texture */}

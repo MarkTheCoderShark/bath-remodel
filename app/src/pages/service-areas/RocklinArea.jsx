@@ -1,6 +1,9 @@
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useEstimateModal } from '../../context/EstimateModalContext';
 import heroImg from '../../assets/images/hero-bathroom.png';
+import Breadcrumb from '../../components/Breadcrumb';
+import OtherAreas from '../../components/OtherAreas';
 
 const services = [
   { name: 'Bathroom Remodeling', path: '/services/bathroom-remodeling' },
@@ -33,6 +36,23 @@ export default function RocklinArea() {
   const { openModal } = useEstimateModal();
   return (
     <>
+      <Helmet>
+        <title>Rocklin Bathroom & Kitchen Remodeling | Luxe</title>
+        <meta name="description" content="Quality bathroom and kitchen remodeling in Rocklin, CA. Luxe Bath & Kitchen offers expert design-build services with fixed-price proposals and stunning results." />
+        <link rel="canonical" href="https://luxebathkitchen.com/service-areas/rocklin" />
+        <meta property="og:title" content="Rocklin Bathroom & Kitchen Remodeling | Luxe" />
+        <meta property="og:description" content="Quality bathroom and kitchen remodeling in Rocklin, CA. Luxe Bath & Kitchen offers expert design-build services with fixed-price proposals." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxebathkitchen.com/service-areas/rocklin" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Rocklin Bathroom & Kitchen Remodeling | Luxe" />
+        <meta name="twitter:description" content="Quality bathroom and kitchen remodeling in Rocklin, CA. Luxe Bath & Kitchen offers expert design-build services with fixed-price proposals." />
+      </Helmet>
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Service Areas', href: '/service-areas/sacramento' },
+        { label: 'Rocklin', href: '/service-areas/rocklin' },
+      ]} />
       {/* Hero */}
       <section className="relative min-h-[75vh] md:min-h-[85vh] overflow-hidden">
         <img
@@ -206,6 +226,9 @@ export default function RocklinArea() {
           </div>
         </div>
       </section>
+
+      {/* Other Areas */}
+      <OtherAreas currentPath="/service-areas/rocklin" />
 
       {/* CTA */}
       <section className="py-16 md:py-24 bg-stone">

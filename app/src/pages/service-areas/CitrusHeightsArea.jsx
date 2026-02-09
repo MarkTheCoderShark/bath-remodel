@@ -1,6 +1,9 @@
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useEstimateModal } from '../../context/EstimateModalContext';
 import heroImg from '../../assets/images/hero-bathroom.png';
+import Breadcrumb from '../../components/Breadcrumb';
+import OtherAreas from '../../components/OtherAreas';
 
 const services = [
   { name: 'Bathroom Remodeling', path: '/services/bathroom-remodeling' },
@@ -33,6 +36,23 @@ export default function CitrusHeightsArea() {
   const { openModal } = useEstimateModal();
   return (
     <>
+      <Helmet>
+        <title>Citrus Heights Bathroom & Kitchen Remodeling | Luxe</title>
+        <meta name="description" content="Premium bathroom and kitchen remodeling in Citrus Heights, CA. Luxe Bath & Kitchen provides design-build renovations with expert craftsmanship and clear pricing." />
+        <link rel="canonical" href="https://luxebathkitchen.com/service-areas/citrus-heights" />
+        <meta property="og:title" content="Citrus Heights Bathroom & Kitchen Remodeling | Luxe" />
+        <meta property="og:description" content="Premium bathroom and kitchen remodeling in Citrus Heights, CA. Luxe Bath & Kitchen provides design-build renovations with expert craftsmanship." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxebathkitchen.com/service-areas/citrus-heights" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Citrus Heights Bathroom & Kitchen Remodeling | Luxe" />
+        <meta name="twitter:description" content="Premium bathroom and kitchen remodeling in Citrus Heights, CA. Luxe Bath & Kitchen provides design-build renovations with expert craftsmanship." />
+      </Helmet>
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Service Areas', href: '/service-areas/sacramento' },
+        { label: 'Citrus Heights', href: '/service-areas/citrus-heights' },
+      ]} />
       {/* Hero */}
       <section className="relative min-h-[75vh] md:min-h-[85vh] overflow-hidden">
         <img
@@ -204,6 +224,9 @@ export default function CitrusHeightsArea() {
           </div>
         </div>
       </section>
+
+      {/* Other Areas */}
+      <OtherAreas currentPath="/service-areas/citrus-heights" />
 
       {/* CTA */}
       <section className="py-16 md:py-24 bg-stone">

@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useEstimateModal } from '../../context/EstimateModalContext';
+import Breadcrumb from '../../components/Breadcrumb';
+import RelatedServices from '../../components/RelatedServices';
 import heroImg from '../../assets/images/after-tub.png';
+import StructuredData from '../../components/StructuredData';
 
 const process = [
   {
@@ -100,8 +104,64 @@ export default function TubToShower() {
   const { openModal } = useEstimateModal();
   const [openFaq, setOpenFaq] = useState(null);
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Tub-to-Shower Conversions',
+    description: 'Replace your unused bathtub with a spacious, modern walk-in shower -- more room, better access, and a fresh look.',
+    url: 'https://luxebathkitchen.com/services/tub-to-shower',
+    provider: {
+      '@type': 'HomeAndConstructionBusiness',
+      name: 'Luxe Bath & Kitchen',
+      url: 'https://luxebathkitchen.com',
+      telephone: '(555) 123-4567',
+    },
+    areaServed: [
+      { '@type': 'City', name: 'Sacramento' },
+      { '@type': 'City', name: 'Elk Grove' },
+      { '@type': 'City', name: 'Roseville' },
+      { '@type': 'City', name: 'Folsom' },
+      { '@type': 'City', name: 'Rancho Cordova' },
+      { '@type': 'City', name: 'Citrus Heights' },
+      { '@type': 'City', name: 'Rocklin' },
+      { '@type': 'City', name: 'Davis' },
+    ],
+  };
+
   return (
     <>
+      <Helmet>
+        <title>Tub to Shower Conversion Sacramento | Luxe Bath & Kitchen</title>
+        <meta name="description" content="Professional tub-to-shower conversions in Sacramento by Luxe Bath & Kitchen. Gain space, improve accessibility, and modernize your bathroom. Free estimates available." />
+        <link rel="canonical" href="https://luxebathkitchen.com/services/tub-to-shower-conversions" />
+        <meta property="og:title" content="Tub to Shower Conversion Sacramento | Luxe Bath & Kitchen" />
+        <meta property="og:description" content="Professional tub-to-shower conversions in Sacramento by Luxe Bath & Kitchen. Gain space, improve accessibility, and modernize your bathroom." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxebathkitchen.com/services/tub-to-shower-conversions" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Tub to Shower Conversion Sacramento | Luxe Bath & Kitchen" />
+        <meta name="twitter:description" content="Professional tub-to-shower conversions in Sacramento by Luxe Bath & Kitchen. Gain space, improve accessibility, and modernize your bathroom." />
+      </Helmet>
+      <StructuredData data={faqSchema} />
+      <StructuredData data={serviceSchema} />
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Services', href: '/services/bathroom-remodeling' },
+        { label: 'Tub-to-Shower Conversions', href: '/services/tub-to-shower-conversions' },
+      ]} />
       {/* ── Hero ── */}
       <section className="relative min-h-[75vh] md:min-h-[85vh] overflow-hidden">
         <img
@@ -272,6 +332,9 @@ export default function TubToShower() {
           </div>
         </div>
       </section>
+
+      {/* ── Related Services ── */}
+      <RelatedServices currentPath="/services/tub-to-shower-conversions" />
 
       {/* ── Bottom CTA ── */}
       <section className="py-16 md:py-24">

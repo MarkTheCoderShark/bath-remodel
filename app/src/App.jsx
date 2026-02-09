@@ -3,6 +3,7 @@ import Layout from './components/Layout'
 import Home from './pages/Home'
 import GalleryPage from './pages/GalleryPage'
 import ContactPage from './pages/ContactPage'
+import NotFound from './pages/NotFound'
 import BathroomRemodeling from './pages/services/BathroomRemodeling'
 import KitchenRemodeling from './pages/services/KitchenRemodeling'
 import WalkInShowers from './pages/services/WalkInShowers'
@@ -41,6 +42,8 @@ function App() {
         <Route path="/service-areas/citrus-heights" element={<CitrusHeightsArea />} />
         <Route path="/service-areas/rocklin" element={<RocklinArea />} />
         <Route path="/service-areas/davis" element={<DavisArea />} />
+        {/* Catch-all 404 */}
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   )

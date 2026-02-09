@@ -1,6 +1,9 @@
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useEstimateModal } from '../../context/EstimateModalContext';
 import heroImg from '../../assets/images/hero-bathroom.png';
+import Breadcrumb from '../../components/Breadcrumb';
+import OtherAreas from '../../components/OtherAreas';
 
 const services = [
   { name: 'Bathroom Remodeling', path: '/services/bathroom-remodeling' },
@@ -33,6 +36,23 @@ export default function RosevilleArea() {
   const { openModal } = useEstimateModal();
   return (
     <>
+      <Helmet>
+        <title>Roseville Bathroom & Kitchen Remodeling | Luxe</title>
+        <meta name="description" content="Expert bathroom and kitchen remodeling in Roseville, CA. Luxe Bath & Kitchen offers premium renovations with design-build simplicity and transparent pricing." />
+        <link rel="canonical" href="https://luxebathkitchen.com/service-areas/roseville" />
+        <meta property="og:title" content="Roseville Bathroom & Kitchen Remodeling | Luxe" />
+        <meta property="og:description" content="Expert bathroom and kitchen remodeling in Roseville, CA. Luxe Bath & Kitchen offers premium renovations with design-build simplicity and transparent pricing." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxebathkitchen.com/service-areas/roseville" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Roseville Bathroom & Kitchen Remodeling | Luxe" />
+        <meta name="twitter:description" content="Expert bathroom and kitchen remodeling in Roseville, CA. Luxe Bath & Kitchen offers premium renovations with design-build simplicity and transparent pricing." />
+      </Helmet>
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Service Areas', href: '/service-areas/sacramento' },
+        { label: 'Roseville', href: '/service-areas/roseville' },
+      ]} />
       {/* Hero */}
       <section className="relative min-h-[75vh] md:min-h-[85vh] overflow-hidden">
         <img
@@ -204,6 +224,9 @@ export default function RosevilleArea() {
           </div>
         </div>
       </section>
+
+      {/* Other Areas */}
+      <OtherAreas currentPath="/service-areas/roseville" />
 
       {/* CTA */}
       <section className="py-16 md:py-24 bg-stone">

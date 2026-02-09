@@ -1,6 +1,9 @@
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useEstimateModal } from '../../context/EstimateModalContext';
 import heroImg from '../../assets/images/hero-bathroom.png';
+import Breadcrumb from '../../components/Breadcrumb';
+import OtherAreas from '../../components/OtherAreas';
 
 const services = [
   { name: 'Bathroom Remodeling', path: '/services/bathroom-remodeling' },
@@ -33,6 +36,23 @@ export default function ElkGroveArea() {
   const { openModal } = useEstimateModal();
   return (
     <>
+      <Helmet>
+        <title>Elk Grove Bathroom & Kitchen Remodeling | Luxe</title>
+        <meta name="description" content="Professional bathroom and kitchen remodeling in Elk Grove, CA. Luxe Bath & Kitchen provides expert design-build renovations with fixed-price estimates." />
+        <link rel="canonical" href="https://luxebathkitchen.com/service-areas/elk-grove" />
+        <meta property="og:title" content="Elk Grove Bathroom & Kitchen Remodeling | Luxe" />
+        <meta property="og:description" content="Professional bathroom and kitchen remodeling in Elk Grove, CA. Luxe Bath & Kitchen provides expert design-build renovations with fixed-price estimates." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxebathkitchen.com/service-areas/elk-grove" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Elk Grove Bathroom & Kitchen Remodeling | Luxe" />
+        <meta name="twitter:description" content="Professional bathroom and kitchen remodeling in Elk Grove, CA. Luxe Bath & Kitchen provides expert design-build renovations with fixed-price estimates." />
+      </Helmet>
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Service Areas', href: '/service-areas/sacramento' },
+        { label: 'Elk Grove', href: '/service-areas/elk-grove' },
+      ]} />
       {/* Hero */}
       <section className="relative min-h-[75vh] md:min-h-[85vh] overflow-hidden">
         <img
@@ -204,6 +224,9 @@ export default function ElkGroveArea() {
           </div>
         </div>
       </section>
+
+      {/* Other Areas */}
+      <OtherAreas currentPath="/service-areas/elk-grove" />
 
       {/* CTA */}
       <section className="py-16 md:py-24 bg-stone">

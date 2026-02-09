@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useEstimateModal } from '../../context/EstimateModalContext';
+import Breadcrumb from '../../components/Breadcrumb';
+import RelatedServices from '../../components/RelatedServices';
 import heroImg from '../../assets/images/service-tile.png';
+import StructuredData from '../../components/StructuredData';
 
 const included = [
   'Surface preparation including backer board installation, leveling, and waterproofing',
@@ -76,8 +80,64 @@ export default function TileStoneWork() {
   const { openModal } = useEstimateModal();
   const [openFaq, setOpenFaq] = useState(null);
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Tile & Stone Work',
+    description: 'Expert tile and natural stone installation that turns floors, walls, and showers into works of lasting craftsmanship.',
+    url: 'https://luxebathkitchen.com/services/tile-stone-work',
+    provider: {
+      '@type': 'HomeAndConstructionBusiness',
+      name: 'Luxe Bath & Kitchen',
+      url: 'https://luxebathkitchen.com',
+      telephone: '(555) 123-4567',
+    },
+    areaServed: [
+      { '@type': 'City', name: 'Sacramento' },
+      { '@type': 'City', name: 'Elk Grove' },
+      { '@type': 'City', name: 'Roseville' },
+      { '@type': 'City', name: 'Folsom' },
+      { '@type': 'City', name: 'Rancho Cordova' },
+      { '@type': 'City', name: 'Citrus Heights' },
+      { '@type': 'City', name: 'Rocklin' },
+      { '@type': 'City', name: 'Davis' },
+    ],
+  };
+
   return (
     <>
+      <Helmet>
+        <title>Tile & Stone Work Sacramento | Luxe Bath & Kitchen</title>
+        <meta name="description" content="Professional tile and stone installation in Sacramento by Luxe Bath & Kitchen. Porcelain, marble, mosaic, and large-format tile for floors, walls, and showers." />
+        <link rel="canonical" href="https://luxebathkitchen.com/services/tile-stone-work" />
+        <meta property="og:title" content="Tile & Stone Work Sacramento | Luxe Bath & Kitchen" />
+        <meta property="og:description" content="Professional tile and stone installation in Sacramento by Luxe Bath & Kitchen. Porcelain, marble, mosaic, and large-format tile for floors, walls, and showers." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxebathkitchen.com/services/tile-stone-work" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Tile & Stone Work Sacramento | Luxe Bath & Kitchen" />
+        <meta name="twitter:description" content="Professional tile and stone installation in Sacramento by Luxe Bath & Kitchen. Porcelain, marble, mosaic, and large-format tile for floors, walls, and showers." />
+      </Helmet>
+      <StructuredData data={faqSchema} />
+      <StructuredData data={serviceSchema} />
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Services', href: '/services/bathroom-remodeling' },
+        { label: 'Tile & Stone Work', href: '/services/tile-stone-work' },
+      ]} />
       {/* ── Hero ── */}
       <section className="relative min-h-[75vh] md:min-h-[85vh] overflow-hidden">
         <img
@@ -254,6 +314,9 @@ export default function TileStoneWork() {
           </div>
         </div>
       </section>
+
+      {/* ── Related Services ── */}
+      <RelatedServices currentPath="/services/tile-stone-work" />
 
       {/* ── Bottom CTA ── */}
       <section className="py-16 md:py-24">

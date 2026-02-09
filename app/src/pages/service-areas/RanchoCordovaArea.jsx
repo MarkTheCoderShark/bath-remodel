@@ -1,6 +1,9 @@
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useEstimateModal } from '../../context/EstimateModalContext';
 import heroImg from '../../assets/images/hero-bathroom.png';
+import Breadcrumb from '../../components/Breadcrumb';
+import OtherAreas from '../../components/OtherAreas';
 
 const services = [
   { name: 'Bathroom Remodeling', path: '/services/bathroom-remodeling' },
@@ -33,6 +36,23 @@ export default function RanchoCordovaArea() {
   const { openModal } = useEstimateModal();
   return (
     <>
+      <Helmet>
+        <title>Rancho Cordova Bathroom & Kitchen Remodeling | Luxe</title>
+        <meta name="description" content="Bathroom and kitchen remodeling in Rancho Cordova, CA by Luxe Bath & Kitchen. Licensed experts offering full-service renovations with fixed-price guarantees." />
+        <link rel="canonical" href="https://luxebathkitchen.com/service-areas/rancho-cordova" />
+        <meta property="og:title" content="Rancho Cordova Bathroom & Kitchen Remodeling | Luxe" />
+        <meta property="og:description" content="Bathroom and kitchen remodeling in Rancho Cordova, CA by Luxe Bath & Kitchen. Licensed experts offering full-service renovations." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxebathkitchen.com/service-areas/rancho-cordova" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Rancho Cordova Bathroom & Kitchen Remodeling | Luxe" />
+        <meta name="twitter:description" content="Bathroom and kitchen remodeling in Rancho Cordova, CA by Luxe Bath & Kitchen. Licensed experts offering full-service renovations." />
+      </Helmet>
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Service Areas', href: '/service-areas/sacramento' },
+        { label: 'Rancho Cordova', href: '/service-areas/rancho-cordova' },
+      ]} />
       {/* Hero */}
       <section className="relative min-h-[75vh] md:min-h-[85vh] overflow-hidden">
         <img
@@ -205,6 +225,9 @@ export default function RanchoCordovaArea() {
           </div>
         </div>
       </section>
+
+      {/* Other Areas */}
+      <OtherAreas currentPath="/service-areas/rancho-cordova" />
 
       {/* CTA */}
       <section className="py-16 md:py-24 bg-stone">

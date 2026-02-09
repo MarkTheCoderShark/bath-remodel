@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useEstimateModal } from '../../context/EstimateModalContext';
+import Breadcrumb from '../../components/Breadcrumb';
+import RelatedServices from '../../components/RelatedServices';
 import heroImg from '../../assets/images/hero-bathroom.png';
+import StructuredData from '../../components/StructuredData';
 
 const included = [
   'Complete demolition and haul-away of existing fixtures, tile, and drywall',
@@ -76,8 +80,64 @@ export default function BathroomRemodeling() {
   const { openModal } = useEstimateModal();
   const [openFaq, setOpenFaq] = useState(null);
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Bathroom Remodeling',
+    description: 'Complete bathroom transformations designed around the way you live -- from first sketch to final grout line.',
+    url: 'https://luxebathkitchen.com/services/bathroom-remodeling',
+    provider: {
+      '@type': 'HomeAndConstructionBusiness',
+      name: 'Luxe Bath & Kitchen',
+      url: 'https://luxebathkitchen.com',
+      telephone: '(555) 123-4567',
+    },
+    areaServed: [
+      { '@type': 'City', name: 'Sacramento' },
+      { '@type': 'City', name: 'Elk Grove' },
+      { '@type': 'City', name: 'Roseville' },
+      { '@type': 'City', name: 'Folsom' },
+      { '@type': 'City', name: 'Rancho Cordova' },
+      { '@type': 'City', name: 'Citrus Heights' },
+      { '@type': 'City', name: 'Rocklin' },
+      { '@type': 'City', name: 'Davis' },
+    ],
+  };
+
   return (
     <>
+      <Helmet>
+        <title>Bathroom Remodeling Sacramento | Luxe Bath & Kitchen</title>
+        <meta name="description" content="Transform your bathroom with Luxe Bath & Kitchen in Sacramento. Full-service bathroom remodeling with design-build simplicity, fixed pricing, and expert craftsmanship." />
+        <link rel="canonical" href="https://luxebathkitchen.com/services/bathroom-remodeling" />
+        <meta property="og:title" content="Bathroom Remodeling Sacramento | Luxe Bath & Kitchen" />
+        <meta property="og:description" content="Transform your bathroom with Luxe Bath & Kitchen in Sacramento. Full-service bathroom remodeling with design-build simplicity and fixed pricing." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxebathkitchen.com/services/bathroom-remodeling" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Bathroom Remodeling Sacramento | Luxe Bath & Kitchen" />
+        <meta name="twitter:description" content="Transform your bathroom with Luxe Bath & Kitchen in Sacramento. Full-service bathroom remodeling with design-build simplicity and fixed pricing." />
+      </Helmet>
+      <StructuredData data={faqSchema} />
+      <StructuredData data={serviceSchema} />
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Services', href: '/services/bathroom-remodeling' },
+        { label: 'Bathroom Remodeling', href: '/services/bathroom-remodeling' },
+      ]} />
       {/* ── Hero ── */}
       <section className="relative min-h-[75vh] md:min-h-[85vh] overflow-hidden">
         <img
@@ -254,6 +314,9 @@ export default function BathroomRemodeling() {
           </div>
         </div>
       </section>
+
+      {/* ── Related Services ── */}
+      <RelatedServices currentPath="/services/bathroom-remodeling" />
 
       {/* ── Bottom CTA ── */}
       <section className="py-16 md:py-24">

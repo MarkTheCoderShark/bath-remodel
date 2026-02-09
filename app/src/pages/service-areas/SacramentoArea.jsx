@@ -1,6 +1,9 @@
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import heroImg from '../../assets/images/hero-bathroom.png';
 import { useEstimateModal } from '../../context/EstimateModalContext';
+import Breadcrumb from '../../components/Breadcrumb';
+import OtherAreas from '../../components/OtherAreas';
 
 const services = [
   { name: 'Bathroom Remodeling', path: '/services/bathroom-remodeling' },
@@ -33,6 +36,23 @@ export default function SacramentoArea() {
   const { openModal } = useEstimateModal();
   return (
     <>
+      <Helmet>
+        <title>Sacramento Bathroom & Kitchen Remodeling | Luxe</title>
+        <meta name="description" content="Top-rated bathroom and kitchen remodeling in Sacramento, CA. Luxe Bath & Kitchen delivers expert renovations with transparent pricing. Get your free estimate today." />
+        <link rel="canonical" href="https://luxebathkitchen.com/service-areas/sacramento" />
+        <meta property="og:title" content="Sacramento Bathroom & Kitchen Remodeling | Luxe" />
+        <meta property="og:description" content="Top-rated bathroom and kitchen remodeling in Sacramento, CA. Luxe Bath & Kitchen delivers expert renovations with transparent pricing." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxebathkitchen.com/service-areas/sacramento" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Sacramento Bathroom & Kitchen Remodeling | Luxe" />
+        <meta name="twitter:description" content="Top-rated bathroom and kitchen remodeling in Sacramento, CA. Luxe Bath & Kitchen delivers expert renovations with transparent pricing." />
+      </Helmet>
+      <Breadcrumb items={[
+        { label: 'Home', href: '/' },
+        { label: 'Service Areas', href: '/service-areas/sacramento' },
+        { label: 'Sacramento', href: '/service-areas/sacramento' },
+      ]} />
       {/* Hero */}
       <section className="relative min-h-[75vh] md:min-h-[85vh] overflow-hidden">
         <img
@@ -203,6 +223,9 @@ export default function SacramentoArea() {
           </div>
         </div>
       </section>
+
+      {/* Other Areas */}
+      <OtherAreas currentPath="/service-areas/sacramento" />
 
       {/* CTA */}
       <section className="py-16 md:py-24 bg-stone">
