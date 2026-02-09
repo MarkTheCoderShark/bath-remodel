@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useEstimateModal } from '../context/EstimateModalContext';
 
 const navLinks = [
   { label: 'Services', to: '/services/bathroom-remodeling' },
@@ -19,6 +20,7 @@ const serviceLinks = [
 ];
 
 export default function Footer() {
+  const { openModal } = useEstimateModal();
   return (
     <footer className="bg-stone">
       {/* Pre-footer CTA band */}
@@ -33,12 +35,12 @@ export default function Footer() {
             </p>
           </div>
           <div className="flex gap-4">
-            <Link
-              to="/contact"
+            <button
+              onClick={openModal}
               className="bg-brass text-white px-6 py-3 rounded-2xl font-semibold text-sm hover:bg-brass-hover cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
             >
               Get a Free Estimate
-            </Link>
+            </button>
             <a
               href="tel:5551234567"
               className="border border-border-strong text-muted px-6 py-3 rounded-2xl font-semibold text-sm hover:bg-limestone-dark cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"

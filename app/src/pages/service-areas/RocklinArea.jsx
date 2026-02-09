@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useEstimateModal } from '../../context/EstimateModalContext';
 import heroImg from '../../assets/images/hero-bathroom.png';
 
 const services = [
@@ -29,6 +30,7 @@ const reasons = [
 ];
 
 export default function RocklinArea() {
+  const { openModal } = useEstimateModal();
   return (
     <>
       {/* Hero */}
@@ -60,12 +62,12 @@ export default function RocklinArea() {
               discerning homeowners &mdash; from Whitney Oaks to Sunset West.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mt-8">
-              <Link
-                to="/contact"
-                className="bg-brass text-white px-8 py-4 rounded-2xl font-semibold hover:bg-brass-hover text-center transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
+              <button
+                onClick={openModal}
+                className="bg-brass text-white px-8 py-4 rounded-2xl font-semibold hover:bg-brass-hover text-center transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2 cursor-pointer"
               >
                 Get a Free Estimate
-              </Link>
+              </button>
               <a
                 href="tel:5551234567"
                 className="text-white border border-white/30 px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 text-center transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
@@ -217,12 +219,12 @@ export default function RocklinArea() {
             pressure, no surprises.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/contact"
-              className="bg-brass text-white px-8 py-4 rounded-2xl font-semibold hover:bg-brass-hover transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
+            <button
+              onClick={openModal}
+              className="bg-brass text-white px-8 py-4 rounded-2xl font-semibold hover:bg-brass-hover transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2 cursor-pointer"
             >
               Get a Free Estimate
-            </Link>
+            </button>
             <a
               href="tel:5551234567"
               className="border border-border-strong text-muted px-8 py-4 rounded-2xl font-semibold hover:bg-limestone-dark transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"

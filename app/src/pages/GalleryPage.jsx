@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import { useEstimateModal } from '../context/EstimateModalContext';
 
 import heroBathroom from '../assets/images/hero-bathroom.png';
 import afterShower from '../assets/images/after-shower.png';
@@ -56,6 +57,7 @@ const projects = [
 const categories = ['All', 'Bathroom', 'Kitchen', 'Shower', 'Tile & Stone', 'Vanity'];
 
 export default function GalleryPage() {
+  const { openModal } = useEstimateModal();
   const [activeCategory, setActiveCategory] = useState('All');
   const [lightboxIndex, setLightboxIndex] = useState(null);
 
@@ -251,12 +253,12 @@ export default function GalleryPage() {
             craftsmanship and thoughtful design.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-            <Link
-              to="/contact"
-              className="bg-brass text-white px-8 py-4 rounded-2xl font-semibold hover:bg-brass-hover text-center transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
+            <button
+              onClick={openModal}
+              className="bg-brass text-white px-8 py-4 rounded-2xl font-semibold hover:bg-brass-hover text-center transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2 cursor-pointer"
             >
               Get a Free Estimate
-            </Link>
+            </button>
             <a
               href="tel:5551234567"
               className="border border-border-strong text-muted px-8 py-4 rounded-2xl font-semibold hover:bg-limestone-dark text-center transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"

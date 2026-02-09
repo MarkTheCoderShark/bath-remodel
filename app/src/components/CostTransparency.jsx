@@ -1,4 +1,7 @@
+import { useEstimateModal } from '../context/EstimateModalContext';
+
 export default function CostTransparency() {
+  const { openModal } = useEstimateModal();
   return (
     <section id="pricing" className="bg-limestone-dark py-16 md:py-24 lg:py-32">
       <div className="max-w-[1200px] mx-auto px-4 md:px-6 lg:px-8">
@@ -154,8 +157,8 @@ export default function CostTransparency() {
               </ul>
             </div>
 
-            <a
-              href="#contact"
+            <button
+              onClick={openModal}
               className="mt-8 inline-flex items-center gap-2 text-charcoal font-semibold text-sm hover:text-ink transition-colors duration-200 cursor-pointer focus:outline-2 focus:outline-brass focus:outline-offset-2"
             >
               Get your personalized estimate
@@ -173,7 +176,7 @@ export default function CostTransparency() {
                 <line x1="5" y1="12" x2="19" y2="12" />
                 <polyline points="12 5 19 12 12 19" />
               </svg>
-            </a>
+            </button>
           </div>
         </div>
       </div>

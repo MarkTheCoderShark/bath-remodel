@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useEstimateModal } from '../context/EstimateModalContext';
 
 export default function StickyMobileCTA() {
+  const { openModal } = useEstimateModal();
   const [pastHero, setPastHero] = useState(false);
   const [contactVisible, setContactVisible] = useState(false);
 
@@ -49,12 +51,12 @@ export default function StickyMobileCTA() {
       }`}
     >
       <div className="bg-limestone-light/95 backdrop-blur-md border-t border-border shadow-lg px-4 py-3">
-        <a
-          href="#contact"
-          className="w-full block bg-brass text-white py-3 rounded-xl font-semibold text-center hover:bg-brass-hover cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
+        <button
+          onClick={openModal}
+          className="w-full bg-brass text-white py-3 rounded-xl font-semibold text-center hover:bg-brass-hover cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
         >
           Get a Free Estimate
-        </a>
+        </button>
       </div>
     </div>
   );

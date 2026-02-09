@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/images/logo.png';
+import { useEstimateModal } from '../context/EstimateModalContext';
 
 const serviceItems = [
   { label: 'Bathroom Remodeling', to: '/services/bathroom-remodeling' },
@@ -28,6 +29,7 @@ const navLinks = [
 ];
 
 export default function Header() {
+  const { openModal } = useEstimateModal();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [areasOpen, setAreasOpen] = useState(false);
@@ -112,12 +114,12 @@ export default function Header() {
                 </svg>
                 (555) 123-4567
               </a>
-              <Link
-                to="/contact"
+              <button
+                onClick={openModal}
                 className="bg-brass text-white px-6 py-2.5 rounded-lg text-base font-semibold hover:bg-brass-hover cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
               >
                 Free Estimate
-              </Link>
+              </button>
             </div>
 
             {/* Mobile: phone + hamburger */}
@@ -365,13 +367,12 @@ export default function Header() {
             )}
 
             <div className="px-4 py-4">
-              <Link
-                to="/contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block bg-brass text-white text-center px-5 py-3 rounded-lg text-sm font-semibold hover:bg-brass-hover cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
+              <button
+                onClick={() => { openModal(); setMobileMenuOpen(false); }}
+                className="block w-full bg-brass text-white text-center px-5 py-3 rounded-lg text-sm font-semibold hover:bg-brass-hover cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
               >
                 Get a Free Estimate
-              </Link>
+              </button>
             </div>
           </nav>
         </div>

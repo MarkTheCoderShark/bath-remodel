@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEstimateModal } from '../../context/EstimateModalContext';
 import heroImg from '../../assets/images/after-tub.png';
 
 const process = [
@@ -97,6 +97,7 @@ const faqs = [
 ];
 
 export default function TubToShower() {
+  const { openModal } = useEstimateModal();
   const [openFaq, setOpenFaq] = useState(null);
 
   return (
@@ -129,12 +130,12 @@ export default function TubToShower() {
               Replace your unused bathtub with a spacious, modern walk-in shower -- more room, better access, and a fresh look.
             </p>
             <div className="mt-8">
-              <Link
-                to="/contact"
+              <button
+                onClick={openModal}
                 className="inline-block bg-brass text-white px-8 py-4 rounded-2xl font-semibold hover:bg-brass-hover text-center transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
               >
                 Get a Free Estimate
-              </Link>
+              </button>
             </div>
             <p className="text-white/50 text-sm mt-5">
               Licensed &bull; Insured &bull; Serving Sacramento, Roseville &amp; Elk Grove
@@ -281,12 +282,12 @@ export default function TubToShower() {
           <p className="text-muted text-lg mb-8 max-w-xl mx-auto">
             Get a free in-home assessment and see how a tub-to-shower conversion can open up your bathroom and simplify your daily routine.
           </p>
-          <Link
-            to="/contact"
+          <button
+            onClick={openModal}
             className="inline-block bg-brass text-white px-10 py-4 rounded-2xl font-semibold hover:bg-brass-hover transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
           >
             Get a Free Estimate
-          </Link>
+          </button>
           <p className="text-subtle text-sm mt-5">
             Most conversions completed in 2-3 weeks.
           </p>

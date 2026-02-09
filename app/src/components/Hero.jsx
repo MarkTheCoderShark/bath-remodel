@@ -1,6 +1,8 @@
 import heroImage from '../assets/images/hero-bathroom.png';
+import { useEstimateModal } from '../context/EstimateModalContext';
 
 export default function Hero() {
+  const { openModal } = useEstimateModal();
   return (
     <section className="relative min-h-[min(95vh,800px)] md:min-h-[100vh] overflow-hidden">
       {/* Background image */}
@@ -34,12 +36,12 @@ export default function Hero() {
 
           {/* CTA row */}
           <div className="flex flex-col sm:flex-row gap-4 mt-8">
-            <a
-              href="#contact"
+            <button
+              onClick={openModal}
               className="bg-brass text-white px-8 py-4 rounded-2xl font-semibold hover:bg-brass-hover text-center cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
             >
               Get a Free Estimate
-            </a>
+            </button>
             <a
               href="#gallery"
               className="text-white border border-white/30 px-8 py-4 rounded-2xl font-semibold hover:bg-white/10 text-center cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"

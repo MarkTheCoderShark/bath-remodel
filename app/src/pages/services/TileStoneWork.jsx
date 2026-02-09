@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEstimateModal } from '../../context/EstimateModalContext';
 import heroImg from '../../assets/images/service-tile.png';
 
 const included = [
@@ -73,6 +73,7 @@ const faqs = [
 ];
 
 export default function TileStoneWork() {
+  const { openModal } = useEstimateModal();
   const [openFaq, setOpenFaq] = useState(null);
 
   return (
@@ -105,12 +106,12 @@ export default function TileStoneWork() {
               Expert tile and natural stone installation that turns floors, walls, and showers into works of lasting craftsmanship.
             </p>
             <div className="mt-8">
-              <Link
-                to="/contact"
+              <button
+                onClick={openModal}
                 className="inline-block bg-brass text-white px-8 py-4 rounded-2xl font-semibold hover:bg-brass-hover text-center transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
               >
                 Get a Free Estimate
-              </Link>
+              </button>
             </div>
             <p className="text-white/50 text-sm mt-5">
               Licensed &bull; Insured &bull; Serving Sacramento, Roseville &amp; Elk Grove
@@ -263,12 +264,12 @@ export default function TileStoneWork() {
           <p className="text-muted text-lg mb-8 max-w-xl mx-auto">
             From a single backsplash to a full bathroom of floor-to-ceiling stone, get a free estimate for expert tile installation in Sacramento.
           </p>
-          <Link
-            to="/contact"
+          <button
+            onClick={openModal}
             className="inline-block bg-brass text-white px-10 py-4 rounded-2xl font-semibold hover:bg-brass-hover transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
           >
             Get a Free Estimate
-          </Link>
+          </button>
           <p className="text-subtle text-sm mt-5">
             Free material consultations available.
           </p>

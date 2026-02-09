@@ -1,3 +1,4 @@
+import { useEstimateModal } from '../context/EstimateModalContext';
 import heroImage from '../assets/images/hero-bathroom.png';
 import afterShower from '../assets/images/after-shower.png';
 import afterKitchen from '../assets/images/after-kitchen.png';
@@ -45,6 +46,7 @@ const services = [
 ];
 
 export default function Services() {
+  const { openModal } = useEstimateModal();
   return (
     <section id="services" className="bg-stone py-16 md:py-24 lg:py-32">
       <div className="max-w-[1200px] mx-auto px-4 md:px-6 lg:px-8">
@@ -84,12 +86,12 @@ export default function Services() {
                 <p className="text-muted text-sm leading-relaxed">
                   {service.description}
                 </p>
-                <a
-                  href="#contact"
-                  className="inline-block mt-4 text-charcoal font-medium text-sm tracking-wide hover:text-brass transition-colors duration-200"
+                <button
+                  onClick={openModal}
+                  className="inline-block mt-4 text-charcoal font-medium text-sm tracking-wide hover:text-brass transition-colors duration-200 cursor-pointer"
                 >
                   Get a quote &rarr;
-                </a>
+                </button>
               </div>
             </div>
           ))}
