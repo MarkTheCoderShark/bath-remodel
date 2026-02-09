@@ -4,6 +4,7 @@ import { useEstimateModal } from '../../context/EstimateModalContext';
 import heroImg from '../../assets/images/hero-bathroom.png';
 import Breadcrumb from '../../components/Breadcrumb';
 import OtherAreas from '../../components/OtherAreas';
+import StructuredData from '../../components/StructuredData';
 
 const services = [
   { name: 'Bathroom Remodeling', path: '/services/bathroom-remodeling' },
@@ -47,7 +48,20 @@ export default function ElkGroveArea() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Elk Grove Bathroom & Kitchen Remodeling | Luxe" />
         <meta name="twitter:description" content="Professional bathroom and kitchen remodeling in Elk Grove, CA. Luxe Bath & Kitchen provides expert design-build renovations with fixed-price estimates." />
+        <meta property="og:image" content="https://luxebathkitchen.com/og-default.jpg" />
+        <meta name="twitter:image" content="https://luxebathkitchen.com/og-default.jpg" />
       </Helmet>
+      <StructuredData data={{
+        '@context': 'https://schema.org',
+        '@type': 'HomeAndConstructionBusiness',
+        name: 'Luxe Bath & Kitchen',
+        url: 'https://luxebathkitchen.com/service-areas/elk-grove',
+        telephone: '(555) 123-4567',
+        email: 'info@luxebathkitchen.com',
+        priceRange: '$$$',
+        areaServed: { '@type': 'City', name: 'Elk Grove' },
+        aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', bestRating: '5', ratingCount: '180' },
+      }} />
       <Breadcrumb items={[
         { label: 'Home', href: '/' },
         { label: 'Service Areas', href: '/service-areas/sacramento' },

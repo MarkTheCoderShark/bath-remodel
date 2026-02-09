@@ -1,8 +1,24 @@
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 export default function NotFound() {
   return (
-    <section className="py-24 md:py-32">
+    <>
+      <Helmet>
+        <title>Page Not Found | Luxe Bath & Kitchen</title>
+        <meta name="description" content="The page you're looking for doesn't exist. Return to Luxe Bath & Kitchen for premium bathroom and kitchen remodeling in Sacramento." />
+        <link rel="canonical" href="https://luxebathkitchen.com/404" />
+        <meta property="og:title" content="Page Not Found | Luxe Bath & Kitchen" />
+        <meta property="og:description" content="The page you're looking for doesn't exist. Return to Luxe Bath & Kitchen for premium bathroom and kitchen remodeling in Sacramento." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxebathkitchen.com/404" />
+        <meta property="og:image" content="https://luxebathkitchen.com/og-default.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Page Not Found | Luxe Bath & Kitchen" />
+        <meta name="twitter:description" content="The page you're looking for doesn't exist. Return to Luxe Bath & Kitchen for premium bathroom and kitchen remodeling in Sacramento." />
+        <meta name="twitter:image" content="https://luxebathkitchen.com/og-default.jpg" />
+      </Helmet>
+      <section className="py-24 md:py-32">
       <div className="max-w-[600px] mx-auto px-4 md:px-6 lg:px-8 text-center">
         <p className="text-brass text-sm font-semibold tracking-widest uppercase mb-4">
           404
@@ -20,6 +36,7 @@ export default function NotFound() {
           Back to Home
         </Link>
       </div>
-    </section>
+      </section>
+    </>
   );
 }

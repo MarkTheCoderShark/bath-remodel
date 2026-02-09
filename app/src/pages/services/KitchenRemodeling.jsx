@@ -154,6 +154,8 @@ export default function KitchenRemodeling() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Kitchen Remodeling Sacramento | Luxe Bath & Kitchen" />
         <meta name="twitter:description" content="Expert kitchen remodeling in Sacramento by Luxe Bath & Kitchen. Custom cabinetry, countertops, layouts, and finishes with fixed-price proposals." />
+        <meta property="og:image" content="https://luxebathkitchen.com/og-default.jpg" />
+        <meta name="twitter:image" content="https://luxebathkitchen.com/og-default.jpg" />
       </Helmet>
       <StructuredData data={faqSchema} />
       <StructuredData data={serviceSchema} />

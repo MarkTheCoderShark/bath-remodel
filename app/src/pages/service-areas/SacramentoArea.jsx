@@ -4,6 +4,7 @@ import heroImg from '../../assets/images/hero-bathroom.png';
 import { useEstimateModal } from '../../context/EstimateModalContext';
 import Breadcrumb from '../../components/Breadcrumb';
 import OtherAreas from '../../components/OtherAreas';
+import StructuredData from '../../components/StructuredData';
 
 const services = [
   { name: 'Bathroom Remodeling', path: '/services/bathroom-remodeling' },
@@ -47,7 +48,20 @@ export default function SacramentoArea() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Sacramento Bathroom & Kitchen Remodeling | Luxe" />
         <meta name="twitter:description" content="Top-rated bathroom and kitchen remodeling in Sacramento, CA. Luxe Bath & Kitchen delivers expert renovations with transparent pricing." />
+        <meta property="og:image" content="https://luxebathkitchen.com/og-default.jpg" />
+        <meta name="twitter:image" content="https://luxebathkitchen.com/og-default.jpg" />
       </Helmet>
+      <StructuredData data={{
+        '@context': 'https://schema.org',
+        '@type': 'HomeAndConstructionBusiness',
+        name: 'Luxe Bath & Kitchen',
+        url: 'https://luxebathkitchen.com/service-areas/sacramento',
+        telephone: '(555) 123-4567',
+        email: 'info@luxebathkitchen.com',
+        priceRange: '$$$',
+        areaServed: { '@type': 'City', name: 'Sacramento' },
+        aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', bestRating: '5', ratingCount: '180' },
+      }} />
       <Breadcrumb items={[
         { label: 'Home', href: '/' },
         { label: 'Service Areas', href: '/service-areas/sacramento' },

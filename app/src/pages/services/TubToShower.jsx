@@ -122,7 +122,7 @@ export default function TubToShower() {
     '@type': 'Service',
     name: 'Tub-to-Shower Conversions',
     description: 'Replace your unused bathtub with a spacious, modern walk-in shower -- more room, better access, and a fresh look.',
-    url: 'https://luxebathkitchen.com/services/tub-to-shower',
+    url: 'https://luxebathkitchen.com/services/tub-to-shower-conversions',
     provider: {
       '@type': 'HomeAndConstructionBusiness',
       name: 'Luxe Bath & Kitchen',
@@ -154,6 +154,8 @@ export default function TubToShower() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Tub to Shower Conversion Sacramento | Luxe Bath & Kitchen" />
         <meta name="twitter:description" content="Professional tub-to-shower conversions in Sacramento by Luxe Bath & Kitchen. Gain space, improve accessibility, and modernize your bathroom." />
+        <meta property="og:image" content="https://luxebathkitchen.com/og-default.jpg" />
+        <meta name="twitter:image" content="https://luxebathkitchen.com/og-default.jpg" />
       </Helmet>
       <StructuredData data={faqSchema} />
       <StructuredData data={serviceSchema} />

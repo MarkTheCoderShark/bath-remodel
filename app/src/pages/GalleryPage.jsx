@@ -124,6 +124,8 @@ export default function GalleryPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Our Work | Bathroom & Kitchen Remodeling Gallery | Luxe" />
         <meta name="twitter:description" content="Browse our portfolio of bathroom and kitchen remodeling projects across Sacramento. See before-and-after transformations showcasing our expert craftsmanship." />
+        <meta property="og:image" content="https://luxebathkitchen.com/og-default.jpg" />
+        <meta name="twitter:image" content="https://luxebathkitchen.com/og-default.jpg" />
       </Helmet>
       <Breadcrumb items={[
         { label: 'Home', href: '/' },

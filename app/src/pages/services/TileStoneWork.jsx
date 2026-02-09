@@ -130,6 +130,8 @@ export default function TileStoneWork() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Tile & Stone Work Sacramento | Luxe Bath & Kitchen" />
         <meta name="twitter:description" content="Professional tile and stone installation in Sacramento by Luxe Bath & Kitchen. Porcelain, marble, mosaic, and large-format tile for floors, walls, and showers." />
+        <meta property="og:image" content="https://luxebathkitchen.com/og-default.jpg" />
+        <meta name="twitter:image" content="https://luxebathkitchen.com/og-default.jpg" />
       </Helmet>
       <StructuredData data={faqSchema} />
       <StructuredData data={serviceSchema} />

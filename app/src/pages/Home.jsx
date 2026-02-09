@@ -22,6 +22,28 @@ const localBusinessSchema = {
   email: 'info@luxebathkitchen.com',
   priceRange: '$$$',
   image: 'https://luxebathkitchen.com/og-image.jpg',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Sacramento',
+    addressRegion: 'CA',
+    postalCode: '95814',
+    addressCountry: 'US',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:00',
+      closes: '18:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Saturday',
+      opens: '09:00',
+      closes: '14:00',
+    },
+  ],
+  sameAs: [],
   areaServed: [
     { '@type': 'City', name: 'Sacramento' },
     { '@type': 'City', name: 'Elk Grove' },
@@ -67,6 +89,8 @@ export default function Home() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Premium Bath & Kitchen Remodeling Sacramento | Luxe" />
         <meta name="twitter:description" content="Luxe Bath & Kitchen offers premium bathroom and kitchen remodeling in Sacramento, CA. Expert craftsmanship, transparent pricing, and stunning results." />
+        <meta property="og:image" content="https://luxebathkitchen.com/og-default.jpg" />
+        <meta name="twitter:image" content="https://luxebathkitchen.com/og-default.jpg" />
       </Helmet>
       <StructuredData data={localBusinessSchema} />
       <StructuredData data={breadcrumbSchema} />

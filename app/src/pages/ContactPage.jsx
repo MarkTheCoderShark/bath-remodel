@@ -112,6 +112,8 @@ export default function ContactPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Contact Us | Free Remodeling Estimate | Luxe Bath & Kitchen" />
         <meta name="twitter:description" content="Contact Luxe Bath & Kitchen for a free, no-obligation remodeling estimate in Sacramento, CA. Call (555) 123-4567 or fill out our form." />
+        <meta property="og:image" content="https://luxebathkitchen.com/og-default.jpg" />
+        <meta name="twitter:image" content="https://luxebathkitchen.com/og-default.jpg" />
       </Helmet>
       <Breadcrumb items={[
         { label: 'Home', href: '/' },

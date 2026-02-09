@@ -130,6 +130,8 @@ export default function VanityCountertops() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Vanity & Countertops Sacramento | Luxe Bath & Kitchen" />
         <meta name="twitter:description" content="Custom vanity and countertop installation in Sacramento by Luxe Bath & Kitchen. Quartz, granite, marble countertops with expert fabrication." />
+        <meta property="og:image" content="https://luxebathkitchen.com/og-default.jpg" />
+        <meta name="twitter:image" content="https://luxebathkitchen.com/og-default.jpg" />
       </Helmet>
       <StructuredData data={faqSchema} />
       <StructuredData data={serviceSchema} />

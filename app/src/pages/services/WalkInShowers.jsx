@@ -129,6 +129,8 @@ export default function WalkInShowers() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Custom Walk-In Showers Sacramento | Luxe Bath & Kitchen" />
         <meta name="twitter:description" content="Custom walk-in shower installation in Sacramento by Luxe Bath & Kitchen. Frameless glass, premium tile, rain heads, and built-in storage." />
+        <meta property="og:image" content="https://luxebathkitchen.com/og-default.jpg" />
+        <meta name="twitter:image" content="https://luxebathkitchen.com/og-default.jpg" />
       </Helmet>
       <StructuredData data={faqSchema} />
       <StructuredData data={serviceSchema} />
