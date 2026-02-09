@@ -63,34 +63,46 @@ export default function BeforeAfter() {
             each reflecting our commitment to quality and craftsmanship.
           </p>
 
-          {/* Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {/* Image-forward grid — overlay text, no card chrome */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {projects.map((project, i) => (
               <button
                 key={project.title}
                 onClick={() => setSelected(i)}
-                className="group relative overflow-hidden rounded-2xl cursor-pointer text-left bg-stone border border-border-strong hover:border-brass/30 transition-all duration-300 hover:shadow-soft focus:outline-2 focus:outline-brass focus:outline-offset-2"
+                className="group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3] focus:outline-2 focus:outline-brass focus:outline-offset-2"
               >
-                {/* Image */}
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
+                {/* Full-bleed image */}
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                />
 
-                {/* Info */}
-                <div className="p-5">
-                  <div className="flex items-center gap-1.5 text-subtle-2 text-xs mb-2">
+                {/* Permanent bottom gradient for text readability */}
+                <div
+                  className="absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/10 to-transparent transition-opacity duration-300 group-hover:from-ink/75"
+                  aria-hidden="true"
+                />
+
+                {/* Category chip — top left */}
+                <span className="absolute top-3 left-3 text-[10px] font-semibold uppercase tracking-widest text-white/90 bg-white/15 backdrop-blur-sm px-2.5 py-1 rounded-md">
+                  {project.tags[0]}
+                </span>
+
+                {/* Overlay text — bottom */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
+                  <h3 className="font-serif text-white text-base md:text-lg font-semibold drop-shadow-sm">
+                    {project.title}
+                  </h3>
+                  <p className="text-white/60 text-xs mt-1 flex items-center gap-1">
                     <svg
-                      width="12"
-                      height="12"
+                      width="10"
+                      height="10"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      strokeWidth={2}
+                      strokeWidth={2.5}
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       aria-hidden="true"
@@ -99,20 +111,7 @@ export default function BeforeAfter() {
                       <circle cx="12" cy="10" r="3" />
                     </svg>
                     {project.location}
-                  </div>
-                  <h3 className="font-sans text-base font-semibold text-charcoal group-hover:text-brass transition-colors duration-200">
-                    {project.title}
-                  </h3>
-                  <div className="flex flex-wrap gap-1.5 mt-3">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs text-subtle bg-limestone-dark px-2.5 py-1 rounded-md"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  </p>
                 </div>
               </button>
             ))}
