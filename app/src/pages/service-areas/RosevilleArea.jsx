@@ -32,7 +32,7 @@ export default function RosevilleArea() {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-[60vh] md:min-h-[70vh] overflow-hidden">
+      <section className="relative min-h-[75vh] md:min-h-[85vh] overflow-hidden">
         <img
           src={heroImg}
           alt="Luxury bathroom remodel in a Roseville home"
@@ -47,7 +47,7 @@ export default function RosevilleArea() {
           }}
           aria-hidden="true"
         />
-        <div className="relative z-10 flex flex-col justify-end pb-20 md:pb-28 min-h-[60vh] md:min-h-[70vh]">
+        <div className="relative z-10 flex flex-col justify-end pb-20 md:pb-28 min-h-[75vh] md:min-h-[85vh]">
           <div className="max-w-[1200px] mx-auto px-4 md:px-6 lg:px-8 w-full">
             <p className="text-brass text-sm font-semibold tracking-widest uppercase mb-3">
               Service Area
