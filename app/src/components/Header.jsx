@@ -1,17 +1,69 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import logo from '../assets/images/logo.png';
+
+const serviceItems = [
+  { label: 'Bathroom Remodeling', href: '#services' },
+  { label: 'Kitchen Remodeling', href: '#services' },
+  { label: 'Walk-In Showers', href: '#services' },
+  { label: 'Tub-to-Shower Conversions', href: '#services' },
+  { label: 'Tile & Stone Work', href: '#services' },
+  { label: 'Vanity & Countertops', href: '#services' },
+];
+
+const serviceAreas = [
+  { label: 'Sacramento', href: '#service-area' },
+  { label: 'Elk Grove', href: '#service-area' },
+  { label: 'Roseville', href: '#service-area' },
+  { label: 'Folsom', href: '#service-area' },
+  { label: 'Rancho Cordova', href: '#service-area' },
+  { label: 'Citrus Heights', href: '#service-area' },
+];
+
+const navLinks = [
+  { label: 'Gallery', href: '#gallery' },
+  { label: 'Process', href: '#process' },
+  { label: 'Reviews', href: '#reviews' },
+  { label: 'Contact', href: '#contact' },
+];
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [areasOpen, setAreasOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileAreasOpen, setMobileAreasOpen] = useState(false);
+  const servicesRef = useRef(null);
+  const areasRef = useRef(null);
 
-  const navLinks = [
-    { label: 'Services', href: '#services' },
-    { label: 'Gallery', href: '#gallery' },
-    { label: 'Process', href: '#process' },
-    { label: 'Pricing', href: '#pricing' },
-    { label: 'Reviews', href: '#reviews' },
-    { label: 'Contact', href: '#contact' },
-  ];
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (servicesRef.current && !servicesRef.current.contains(e.target)) {
+        setServicesOpen(false);
+      }
+      if (areasRef.current && !areasRef.current.contains(e.target)) {
+        setAreasOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, []);
+
+  const chevron = (
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <polyline points="6 9 12 15 18 9" />
+    </svg>
+  );
 
   return (
     <>
@@ -30,10 +82,7 @@ export default function Header() {
             </div>
 
             {/* Center on desktop / Left on mobile: Brand */}
-            <a
-              href="#"
-              className="cursor-pointer"
-            >
+            <a href="#" className="cursor-pointer">
               <img
                 src={logo}
                 alt="Oakwood Remodel"
@@ -130,6 +179,34 @@ export default function Header() {
         <div className="hidden md:block bg-limestone-light/95 backdrop-blur-md border-b border-border">
           <div className="max-w-[1200px] mx-auto px-4 md:px-6 lg:px-8">
             <nav className="flex items-center justify-center gap-8 h-11">
+              {/* Services dropdown */}
+              <div ref={servicesRef} className="relative">
+                <button
+                  onClick={() => {
+                    setServicesOpen((prev) => !prev);
+                    setAreasOpen(false);
+                  }}
+                  className="flex items-center gap-1 text-sm font-medium text-charcoal hover:text-brass cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
+                >
+                  Services {chevron}
+                </button>
+                {servicesOpen && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-limestone-light rounded-xl border border-border-strong shadow-soft py-2 z-50">
+                    {serviceItems.map((item) => (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        onClick={() => setServicesOpen(false)}
+                        className="block px-4 py-2.5 text-sm text-muted hover:text-charcoal hover:bg-limestone-dark transition-colors duration-150"
+                      >
+                        {item.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Standard links */}
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -139,6 +216,33 @@ export default function Header() {
                   {link.label}
                 </a>
               ))}
+
+              {/* Service Areas dropdown */}
+              <div ref={areasRef} className="relative">
+                <button
+                  onClick={() => {
+                    setAreasOpen((prev) => !prev);
+                    setServicesOpen(false);
+                  }}
+                  className="flex items-center gap-1 text-sm font-medium text-charcoal hover:text-brass cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
+                >
+                  Service Areas {chevron}
+                </button>
+                {areasOpen && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-limestone-light rounded-xl border border-border-strong shadow-soft py-2 z-50">
+                    {serviceAreas.map((area) => (
+                      <a
+                        key={area.label}
+                        href={area.href}
+                        onClick={() => setAreasOpen(false)}
+                        className="block px-4 py-2.5 text-sm text-muted hover:text-charcoal hover:bg-limestone-dark transition-colors duration-150"
+                      >
+                        {area.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
             </nav>
           </div>
         </div>
@@ -148,16 +252,90 @@ export default function Header() {
       {mobileMenuOpen && (
         <div className="fixed top-24 left-0 right-0 z-40 bg-limestone-light border-b border-border shadow-lg md:hidden">
           <nav className="flex flex-col">
+            {/* Services accordion */}
+            <button
+              onClick={() => setMobileServicesOpen((prev) => !prev)}
+              className="flex items-center justify-between py-3 px-4 text-charcoal text-sm font-medium cursor-pointer hover:bg-limestone-dark transition-colors duration-200"
+            >
+              Services
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.5}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+                className={`transition-transform duration-200 ${mobileServicesOpen ? 'rotate-180' : ''}`}
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            {mobileServicesOpen && (
+              <div className="bg-limestone-dark">
+                {serviceItems.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block py-2.5 pl-8 pr-4 text-muted text-sm hover:text-charcoal transition-colors duration-150"
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+            )}
+
+            {/* Standard links */}
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-3 px-4 text-charcoal hover:bg-limestone-dark text-sm font-medium cursor-pointer transition-colors duration-200 focus:outline-2 focus:outline-brass focus:outline-offset-2"
+                className="py-3 px-4 text-charcoal hover:bg-limestone-dark text-sm font-medium cursor-pointer transition-colors duration-200"
               >
                 {link.label}
               </a>
             ))}
+
+            {/* Service Areas accordion */}
+            <button
+              onClick={() => setMobileAreasOpen((prev) => !prev)}
+              className="flex items-center justify-between py-3 px-4 text-charcoal text-sm font-medium cursor-pointer hover:bg-limestone-dark transition-colors duration-200"
+            >
+              Service Areas
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.5}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+                className={`transition-transform duration-200 ${mobileAreasOpen ? 'rotate-180' : ''}`}
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            {mobileAreasOpen && (
+              <div className="bg-limestone-dark">
+                {serviceAreas.map((area) => (
+                  <a
+                    key={area.label}
+                    href={area.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block py-2.5 pl-8 pr-4 text-muted text-sm hover:text-charcoal transition-colors duration-150"
+                  >
+                    {area.label}
+                  </a>
+                ))}
+              </div>
+            )}
+
             <div className="px-4 py-4">
               <a
                 href="#contact"

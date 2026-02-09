@@ -2,8 +2,8 @@ const navLinks = [
   { label: 'Services', href: '#services' },
   { label: 'Portfolio', href: '#gallery' },
   { label: 'Process', href: '#process' },
-  { label: 'Pricing', href: '#pricing' },
   { label: 'Reviews', href: '#reviews' },
+  { label: 'Service Areas', href: '#service-area' },
   { label: 'Contact', href: '#contact' },
 ];
 

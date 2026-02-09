@@ -11,7 +11,7 @@ const cities = [
 
 export default function ServiceArea() {
   return (
-    <section className="py-16 md:py-24 bg-limestone-dark">
+    <section id="service-area" className="py-16 md:py-24 bg-limestone-dark">
       <div className="max-w-[1200px] mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
           {/* Left — text content */}
